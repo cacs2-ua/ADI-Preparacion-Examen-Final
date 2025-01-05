@@ -1,13 +1,22 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Cita Aleatoria</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- Contenedor principal para la cita -->
+      <div class="container">
+        <div class="cita-card">
+          <p class="texto" id="cita-texto">Cargando cita...</p>
+          <p class="autor" id="cita-autor"></p>
+          <button class="boton" id="nueva-cita">Obtener nueva cita</button>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

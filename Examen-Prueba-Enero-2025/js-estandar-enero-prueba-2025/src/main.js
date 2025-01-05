@@ -1,24 +1,25 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// src/main.js
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import './style.css';
+import { getCitaAleatoria } from './firebase/repositories/citasRepository.js';
 
-setupCounter(document.querySelector('#counter'))
+// Función para actualizar la cita en la interfaz
+async function actualizarCita() {
+  const textoCita = document.getElementById('cita-texto');
+  const autorCita = document.getElementById('cita-autor');
+
+  try {
+    const cita = await getCitaAleatoria();
+    textoCita.textContent = cita.texto;
+    autorCita.textContent = `— ${cita.autor}`;
+  } catch (error) {
+    textoCita.textContent = 'Error al obtener la cita.';
+    autorCita.textContent = '';
+  }
+}
+
+// Evento para el botón "Obtener nueva cita"
+document.getElementById('nueva-cita').addEventListener('click', actualizarCita);
+
+// Obtener una cita al cargar la página
+window.addEventListener('DOMContentLoaded', actualizarCita);
