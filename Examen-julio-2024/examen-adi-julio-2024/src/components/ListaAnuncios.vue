@@ -49,18 +49,51 @@ function do_local_update_anuncio({ id, campos }) {
 </script>
 
 <template>
-  <h2>Listado de Anuncios</h2>
-  <AddAnuncioForm @add_anuncio="do_add_anuncio" />
+  <div class="lista-anuncios-container">
+    <h2>Listado de Anuncios</h2>
+    <AddAnuncioForm @add_anuncio="do_add_anuncio" />
 
-  <ul>
-    <li v-for="anuncio in estado.anuncios" :key="anuncio.id">
-      <Anuncio
-        v-bind="anuncio"
-        @delete_anuncio="do_delete_anuncio"
-        @local_update_anuncio="do_local_update_anuncio"
-      />
-    </li>
-  </ul>
+    <ul class="anuncios-ul">
+      <li v-for="anuncio in estado.anuncios" :key="anuncio.id">
+        <Anuncio
+          v-bind="anuncio"
+          @delete_anuncio="do_delete_anuncio"
+          @local_update_anuncio="do_local_update_anuncio"
+        />
+      </li>
+    </ul>
 
-  <button @click="do_logout">Salir</button>
+    <button @click="do_logout" class="btn-logout">Salir</button>
+  </div>
 </template>
+
+<style scoped>
+/* NUEVO: Estilos para ListaAnuncios */
+
+.lista-anuncios-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.anuncios-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.btn-logout {
+  background-color: #d9534f;
+  margin-top: 15px;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-logout:hover {
+  background-color: #c9302c;
+}
+</style>

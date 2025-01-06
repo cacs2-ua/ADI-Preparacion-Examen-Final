@@ -4,7 +4,6 @@ import { updateAnuncio } from '@/repositories/anuncioRepository'
 import { useRouter } from 'vue-router'
 
 let props = defineProps(["id", "texto", "nombreAutor", "fecha", "hora", "uid"])
-
 let emit = defineEmits(["delete_anuncio", "local_update_anuncio"])
 
 let modoEdicion = ref(false)
@@ -15,20 +14,16 @@ const router = useRouter()
 
 async function toggleEdicion() {
   if (modoEdicion.value) {
-    // Al guardar
     try {
       let camposCambiar = {}
       if (nuevoTexto.value !== props.texto) camposCambiar.texto = nuevoTexto.value
       if (nuevoAutor.value !== props.nombreAutor) camposCambiar.nombreAutor = nuevoAutor.value
 
-      // Si hay algo que cambiar
       if (Object.keys(camposCambiar).length > 0) {
         await updateAnuncio(props.id, camposCambiar)
         emit('local_update_anuncio', {
           id: props.id,
-          campos: {
-            ...camposCambiar
-          }
+          campos: { ...camposCambiar }
         })
       }
     } catch (error) {
@@ -51,20 +46,24 @@ function verDetalles() {
         {{ texto }} - {{ nombreAutor }}
       </span>
       <div v-else>
-        <input type="text" v-model="nuevoTexto">
-        <input type="text" v-model="nuevoAutor">
+        <input type="text" v-model="nuevoTexto" class="edit-input">
+        <input type="text" v-model="nuevoAutor" class="edit-input">
       </div>
     </div>
 
     <div class="anuncio-buttons">
-      <button @click="$emit('delete_anuncio', id)">Eliminar</button>
-      <button @click="toggleEdicion">{{ modoEdicion ? 'Guardar' : 'Editar' }}</button>
-      <button @click="verDetalles">Ver detalles</button>
+      <button @click="$emit('delete_anuncio', id)" class="btn-delete">Eliminar</button>
+      <button @click="toggleEdicion" class="btn-edit">
+        {{ modoEdicion ? 'Guardar' : 'Editar' }}
+      </button>
+      <button @click="verDetalles" class="btn-details">Ver detalles</button>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* NUEVO: Estilos para cada Anuncio en la lista */
+
 .anuncio-row {
   display: flex;
   width: 100%;
@@ -79,12 +78,58 @@ function verDetalles() {
   margin-right: 20px;
 }
 
+.edit-input {
+  display: block;
+  margin-bottom: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .anuncio-buttons {
   display: flex;
   align-items: center;
 }
 
-.anuncio-buttons button {
+.btn-delete {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px;
   margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+}
+
+.btn-edit {
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background-color: #ec971f;
+}
+
+.btn-details {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-details:hover {
+  background-color: #31b0d5;
 }
 </style>
