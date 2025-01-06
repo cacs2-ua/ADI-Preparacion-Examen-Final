@@ -1,5 +1,5 @@
 <template>
-   <p> App de ejemplo para Aplicaciones Distribuidas en Internet </p>
+   <p> App Muy Chula </p>
    <RouterLink to="/">Volver</RouterLink>
 </template>
 

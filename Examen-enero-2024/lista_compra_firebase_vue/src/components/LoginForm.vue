@@ -30,7 +30,9 @@ async function do_login() {
   <RouterLink to="/register">
     ¿No tienes cuenta? Regístrate aquí
   </RouterLink>
-
+<br>
+<br>
+<br>
   <RouterLink to="/about">
     Acerca de la app
   </RouterLink>
