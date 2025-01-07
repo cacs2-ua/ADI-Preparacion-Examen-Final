@@ -3,11 +3,11 @@ import { ref } from 'vue'
 import { updateRecurso } from '@/repositories/recursoRepository'
 import { useRouter } from 'vue-router'
 
-let props = defineProps(["id", "texto", "nombreAutor", "fecha", "hora", "uid"])
+let props = defineProps(["id", "pesaje", "nombreAutor", "fecha", "hora", "uid"])
 let emit = defineEmits(["delete_recurso", "local_update_recurso"])
 
 let modoEdicion = ref(false)
-let nuevoTexto = ref(props.texto)
+let nuevoPesaje = ref(props.pesaje)
 let nuevoAutor = ref(props.nombreAutor)
 
 const router = useRouter()
@@ -16,7 +16,7 @@ async function toggleEdicion() {
   if (modoEdicion.value) {
     try {
       let camposCambiar = {}
-      if (nuevoTexto.value !== props.texto) camposCambiar.texto = nuevoTexto.value
+      if (nuevoPesaje.value !== props.pesaje) camposCambiar.pesaje = nuevoPesaje.value
       if (nuevoAutor.value !== props.nombreAutor) camposCambiar.nombreAutor = nuevoAutor.value
 
       if (Object.keys(camposCambiar).length > 0) {
@@ -43,10 +43,10 @@ function verDetalles() {
   <div class="recurso-row">
     <div class="recurso-text">
       <span v-if="!modoEdicion">
-        {{ texto }} - {{ nombreAutor }}
+        {{ pesaje }} - {{ nombreAutor }}
       </span>
       <div v-else>
-        <input type="text" v-model="nuevoTexto" class="edit-input">
+        <input type="text" v-model="nuevoPesaje" class="edit-input">
         <input type="text" v-model="nuevoAutor" class="edit-input">
       </div>
     </div>

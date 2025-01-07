@@ -2,19 +2,19 @@
 import { ref } from 'vue'
 
 let emit = defineEmits(['add_recurso'])
-let texto = ref('')
+let pesaje = ref('')
 let nombreAutor = ref('')
 
 function do_add() {
-  if (texto.value.trim() && nombreAutor.value.trim()) {
+  if (pesaje.value.trim() && nombreAutor.value.trim()) {
     emit('add_recurso', {
-      texto: texto.value,
+      pesaje: pesaje.value,
       nombreAutor: nombreAutor.value
     })
-    texto.value = ''
+    pesaje.value = ''
     nombreAutor.value = ''
   } else {
-    alert('Debes introducir texto y autor')
+    alert('Debes introducir pesaje y autor')
   }
 }
 </script>
@@ -22,7 +22,7 @@ function do_add() {
 <template>
   <div class="add-recurso-container">
     <h3>Añadir un recurso</h3>
-    <input type="text" v-model="texto" placeholder="Texto del recurso" class="input-rc">
+    <input type="text" v-model="pesaje" placeholder="Texto del pesaje" class="input-rc">
     <input type="text" v-model="nombreAutor" placeholder="Nombre del autor" class="input-rc">
     <button @click="do_add" class="btn-add">Añadir</button>
   </div>

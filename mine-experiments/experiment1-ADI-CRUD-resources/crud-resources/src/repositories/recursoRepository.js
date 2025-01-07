@@ -13,7 +13,7 @@ import {
 
 async function getRecursos() {
   if (!auth.currentUser) throw new Error('usuario no autentificado')
-  let q = query(collection(db, 'recursos'), where('uid', '==', auth.currentUser.uid))
+  let q = query(collection(db, 'persianas'), where('uid', '==', auth.currentUser.uid))
   let snapshot = await getDocs(q)
   return snapshot.docs.map(doc => {
     return {
@@ -31,17 +31,17 @@ async function addRecurso(obj) {
     uid: auth.currentUser.uid,
     fecha: fechaActual.toLocaleDateString(),
     hora: fechaActual.toLocaleTimeString(),
-    texto: obj.texto,
+    pesaje: obj.pesaje,
     nombreAutor: obj.nombreAutor
   }
-  let newRef = await addDoc(collection(db, 'recursos'), nuevo)
+  let newRef = await addDoc(collection(db, 'persianas'), nuevo)
   return { id: newRef.id, ...nuevo }
 }
 
 async function updateRecurso(recursoId, campos) {
   // campos: { texto: "...", nombreAutor: "...", ... }
   if (!auth.currentUser) throw new Error('usuario no autentificado')
-  let recursoRef = doc(db, 'recursos', recursoId)
+  let recursoRef = doc(db, 'persianas', recursoId)
   let snap = await getDoc(recursoRef)
   if (!snap.exists()) throw new Error('El recurso no existe')
   if (snap.data().uid !== auth.currentUser.uid) throw new Error('No tienes permisos')
@@ -58,7 +58,7 @@ async function updateRecurso(recursoId, campos) {
 
 async function deleteRecurso(recursoId) {
   if (!auth.currentUser) throw new Error('usuario no autentificado')
-  let recursoRef = doc(db, 'recursos', recursoId)
+  let recursoRef = doc(db, 'persianas', recursoId)
   let snap = await getDoc(recursoRef)
   if (!snap.exists()) throw new Error('El recurso no existe')
   if (snap.data().uid !== auth.currentUser.uid) throw new Error('No tienes permisos')
@@ -67,7 +67,7 @@ async function deleteRecurso(recursoId) {
 
 async function getRecursoById(recursoId) {
   if (!auth.currentUser) throw new Error('usuario no autentificado')
-  let recursoRef = doc(db, 'recursos', recursoId)
+  let recursoRef = doc(db, 'persianas', recursoId)
   let snap = await getDoc(recursoRef)
   if (!snap.exists()) {
     throw new Error('El recurso no existe')
