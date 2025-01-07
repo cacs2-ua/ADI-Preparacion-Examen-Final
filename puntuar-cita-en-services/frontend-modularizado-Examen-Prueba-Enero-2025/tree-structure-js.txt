@@ -1,0 +1,16 @@
+js-estandar-enero-prueba-2025
+├── .gitignore
+├── index.html
+├── package.json
+├── public
+│   └── vite.svg
+└── src
+    ├── counter.js
+    ├── firebase
+    │   ├── config
+    │   │   └── firebaseConfig.js
+    │   └── repositories
+    │       └── citasRepository.js
+    ├── javascript.svg
+    ├── main.js
+    └── style.css
