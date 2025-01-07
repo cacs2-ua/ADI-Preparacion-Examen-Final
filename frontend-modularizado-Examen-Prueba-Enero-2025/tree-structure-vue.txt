@@ -1,0 +1,41 @@
+frontend-enero-plantilla-2025
+├── .gitignore
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── index.html
+├── jsconfig.json
+├── package.json
+├── public
+│   └── favicon.ico
+├── README.md
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── base.css
+│   │   ├── logo.svg
+│   │   └── main.css
+│   ├── components
+│   │   ├── HelloWorld.vue
+│   │   ├── icons
+│   │   │   ├── IconCommunity.vue
+│   │   │   ├── IconDocumentation.vue
+│   │   │   ├── IconEcosystem.vue
+│   │   │   ├── IconSupport.vue
+│   │   │   └── IconTooling.vue
+│   │   ├── TheWelcome.vue
+│   │   └── WelcomeItem.vue
+│   ├── firebase
+│   │   ├── config
+│   │   │   └── firebaseConfig.js
+│   │   └── repositories
+│   │       └── citasRepository.js
+│   ├── main.js
+│   ├── router
+│   │   └── index.js
+│   ├── stores
+│   │   └── counter.js
+│   └── views
+│       ├── AboutView.vue
+│       └── HomeView.vue
+└── vite.config.js
