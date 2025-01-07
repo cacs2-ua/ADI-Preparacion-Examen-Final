@@ -3,13 +3,15 @@ import { ref } from 'vue'
 import { updateRecurso } from '@/repositories/recursoRepository'
 import { useRouter } from 'vue-router'
 
-let props = defineProps(["id", "pesaje", "altura", "edad", "nombreAutor", "fecha", "hora", "uid"])
+let props = defineProps(["id", "pesaje", "altura", "edad", "nacimiento", "horaNacimiento", "nombreAutor", "fecha", "hora", "uid"])
 let emit = defineEmits(["delete_recurso", "local_update_recurso"])
 
 let modoEdicion = ref(false)
 let nuevoPesaje = ref(props.pesaje)
 let nuevaAltura = ref(props.altura)
 let nuevaEdad = ref(props.edad)
+let nuevoNacimiento = ref(props.nacimiento)
+let nuevaHoraNacimiento = ref(props.horaNacimiento)
 let nuevoAutor = ref(props.nombreAutor)
 
 const router = useRouter()
@@ -21,6 +23,8 @@ async function toggleEdicion() {
       if (nuevoPesaje.value !== props.pesaje) camposCambiar.pesaje = nuevoPesaje.value
       if (nuevaAltura.value !== props.altura) camposCambiar.altura = nuevaAltura.value
       if (nuevaEdad.value !== props.edad) camposCambiar.edad = nuevaEdad.value
+      if (nuevoNacimiento.value !== props.nacimiento) camposCambiar.nacimiento = nuevoNacimiento.value
+      if (nuevaHoraNacimiento.value !== props.horaNacimiento) camposCambiar.horaNacimiento = nuevaHoraNacimiento.value
       if (nuevoAutor.value !== props.nombreAutor) camposCambiar.nombreAutor = nuevoAutor.value
 
       if (Object.keys(camposCambiar).length > 0) {
@@ -47,12 +51,14 @@ function verDetalles() {
   <div class="recurso-row">
     <div class="recurso-text">
       <span v-if="!modoEdicion">
-        {{ pesaje }} - {{ altura }} - {{ edad }} - {{ nombreAutor }}
+        {{ pesaje }} - {{ altura }} - {{ edad }} - {{ nacimiento }} - {{ nuevaHoraNacimiento }} - {{ nombreAutor }}
       </span>
       <div v-else>
         <input type="text" v-model="nuevoPesaje" class="edit-input">
         <input type="text" v-model="nuevaAltura" class="edit-input">
         <input type="number" min="0" step="1" v-model="nuevaEdad" class="edit-input">
+        <input type="date" v-model="nuevoNacimiento" class="edit-input">
+        <input type="time" v-model="nuevaHoraNacimiento" class="edit-input">
         <input type="text" v-model="nuevoAutor" class="edit-input">
       </div>
     </div>

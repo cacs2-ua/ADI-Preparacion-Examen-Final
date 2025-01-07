@@ -5,22 +5,29 @@ let emit = defineEmits(['add_recurso'])
 let pesaje = ref('')
 let altura = ref('')
 let edad = ref(5)
+let nacimiento = ref('')
+let horaNacimiento = ref('')
 let nombreAutor = ref('')
 
+
 function do_add() {
-  if (pesaje.value.trim() && altura.value.trim() && edad.value > 0 && nombreAutor.value.trim()) {
+  if (pesaje.value.trim() && altura.value.trim() && edad.value > 0 && nacimiento.value.trim() && horaNacimiento.value.trim() && nombreAutor.value.trim()) {
     emit('add_recurso', {
       pesaje: pesaje.value,
       altura: altura.value,
       edad: edad.value,
+      nacimiento: nacimiento.value,
+      horaNacimiento: horaNacimiento.value,
       nombreAutor: nombreAutor.value
     })
     pesaje.value = ''
     altura.value = ''
     edad.value = 0
+    nacimiento.value=''
+    horaNacimiento.value=''
     nombreAutor.value = ''
   } else {
-    alert('Debes introducir pesaje y autor')
+    alert('Debes introducir todos los datos')
   }
 }
 </script>
@@ -31,7 +38,9 @@ function do_add() {
     <input type="text" v-model="pesaje" placeholder="Texto del pesaje" class="input-rc">
     <input type="text" v-model="altura" placeholder="Altura de la persiana" class="input-rc">
     <input type="number" min="0" step="1" v-model="edad" placeholder="Edad de la persiana" class="input-rc">
-    <input type="text" v-model="nombreAutor" placeholder="Nombre del autor" class="input-rc">
+    <input type="date" v-model="nacimiento" placeholder="Nacimiento de la persiana" class="input-rc">
+    <input type="time" v-model="horaNacimiento" placeholder="Hora de nacimiento de la persiana" class="input-rc">
+    <input type="text" v-model="nombreAutor" placeholder="Nombre del autor de la persiana" class="input-rc">
     <button @click="do_add" class="btn-add">Añadir</button>
   </div>
 </template>

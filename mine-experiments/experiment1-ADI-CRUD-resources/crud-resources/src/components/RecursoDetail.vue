@@ -34,6 +34,8 @@ function volver() {
       <p><b>Texto:</b> {{ recurso.pesaje }}</p>
       <p><b>Altura:</b> {{ recurso.altura }}</p>
       <p><b>Edad:</b> {{ recurso.edad }}</p>
+      <p><b>Nacimiento:</b> {{ recurso.nacimiento }}</p>
+      <p><b>Hora de Nacimiento:</b> {{ recurso.horaNacimiento }}</p>
       <p><b>Autor:</b> {{ recurso.nombreAutor }}</p>
       <p><b>Fecha:</b> {{ recurso.fecha }}</p>
       <p><b>Hora:</b> {{ recurso.hora }}</p>

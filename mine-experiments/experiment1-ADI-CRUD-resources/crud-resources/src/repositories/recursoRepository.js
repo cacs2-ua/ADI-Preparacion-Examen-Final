@@ -34,6 +34,8 @@ async function addRecurso(obj) {
     pesaje: obj.pesaje,
     altura: obj.altura,
     edad: obj.edad,
+    nacimiento: obj.nacimiento,
+    horaNacimiento: obj.horaNacimiento,
     nombreAutor: obj.nombreAutor
   }
   let newRef = await addDoc(collection(db, 'persianas'), nuevo)
