@@ -33,6 +33,7 @@ async function addRecurso(obj) {
     hora: fechaActual.toLocaleTimeString(),
     pesaje: obj.pesaje,
     altura: obj.altura,
+    edad: obj.edad,
     nombreAutor: obj.nombreAutor
   }
   let newRef = await addDoc(collection(db, 'persianas'), nuevo)
