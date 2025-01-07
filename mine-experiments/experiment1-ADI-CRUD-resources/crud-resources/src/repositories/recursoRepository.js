@@ -24,7 +24,7 @@ async function getRecursos() {
 }
 
 async function addRecurso(obj) {
-  // obj = { texto, nombreAutor }
+  // obj = { texto, altura, nombreAutor }
   if (!auth.currentUser) throw new Error('usuario no autentificado')
   let fechaActual = new Date()
   let nuevo = {
@@ -32,6 +32,7 @@ async function addRecurso(obj) {
     fecha: fechaActual.toLocaleDateString(),
     hora: fechaActual.toLocaleTimeString(),
     pesaje: obj.pesaje,
+    altura: obj.altura,
     nombreAutor: obj.nombreAutor
   }
   let newRef = await addDoc(collection(db, 'persianas'), nuevo)

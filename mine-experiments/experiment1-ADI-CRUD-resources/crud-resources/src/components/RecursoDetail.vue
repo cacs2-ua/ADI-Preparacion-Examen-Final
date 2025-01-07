@@ -32,6 +32,7 @@ function volver() {
     <div v-else-if="recurso" class="recurso-detail-info">
       <p><b>ID:</b> {{ recurso.id }}</p>
       <p><b>Texto:</b> {{ recurso.pesaje }}</p>
+      <p><b>Altura:</b> {{ recurso.altura }}</p>
       <p><b>Autor:</b> {{ recurso.nombreAutor }}</p>
       <p><b>Fecha:</b> {{ recurso.fecha }}</p>
       <p><b>Hora:</b> {{ recurso.hora }}</p>
