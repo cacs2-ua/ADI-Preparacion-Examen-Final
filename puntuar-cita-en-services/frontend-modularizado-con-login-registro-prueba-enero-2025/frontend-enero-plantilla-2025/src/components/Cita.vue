@@ -88,7 +88,7 @@ onMounted(() => {
         :numeroDePuntuaciones="cita.numeroDePuntuaciones"
         :nuevaPuntuacion="nuevaPuntuacion"
         @onPuntuar="puntuar"
-        @onActualizarPuntuacion="(nuevoValor) => { nuevaPuntuacion.value = nuevoValor }"
+        @onActualizarPuntuacion="(nuevoValor) => { nuevaPuntuacion = nuevoValor }"
       />
 
       <!-- 3) Botones para obtener cita y logout (y conservamos el mismo diseño) -->

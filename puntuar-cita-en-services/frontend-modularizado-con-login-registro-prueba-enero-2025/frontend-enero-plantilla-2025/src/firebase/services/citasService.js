@@ -16,6 +16,7 @@ export async function puntuarCita(id, puntuacion) {
       throw new Error('La cita no existe')
     }
 
+  
     const data = citaDoc.data()
     const mediaAnterior = data.puntuacionMedia || 0
     const numeroAnterior = data.numeroDePuntuaciones || 0
